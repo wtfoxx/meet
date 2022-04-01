@@ -51,7 +51,7 @@ so that **the interface is cleaner and loads faster**.
 -   **Scenario 2:** User can change the number of events they want to see
 >**Given** the main page is open
 >**When** the user specifies a number of events to be shown
->**Then** the number of events shown will be the number specified by user
+>**Then** the number of events shown will be the number specified by user or less
 
 ### _FEATURE 4: USE THE APP WHEN OFFLINE_
 >**User story:**
