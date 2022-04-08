@@ -14,6 +14,10 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event')).toHaveLength(1);
   });
 
+  test('renders the event summary', () => {
+    expect(EventWrapper.find('.event-summary')).toHaveLength(1);
+  });
+
   test('renders a location', () => {
     expect(EventWrapper.find('.event-location')).toHaveLength(1);
   });
