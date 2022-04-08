@@ -57,7 +57,8 @@ describe('<CitySearch /> component', () => {
 
   test('selecting a suggestion should change query state', () => {
     CitySearchWrapper.setState({
-      query: 'Berlin'
+      query: 'Berlin',
+      suggestions: locations
     });
     const suggestions = CitySearchWrapper.state('suggestions');
     CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
