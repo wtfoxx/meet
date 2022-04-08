@@ -3,6 +3,7 @@ import Event from "./Event";
 import { mockData } from "./mockData";
 
 class EventList extends Component {
+
   render() {
     const { events } = this.props;
     return (
