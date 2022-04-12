@@ -9,9 +9,17 @@ class NumberOfEvents extends Component {
 
     const value = event.target.value;
 
-    this.setState({
-      numberOfEvents: value,
-    });
+    if(value <= 0 || value > 32) {
+      this.setState({
+        numberOfEvents: ''
+      });
+    } else {
+      this.setState({
+        numberOfEvents: value
+      });
+    }
+
+    this.props.updateNumberOfEvents(value);
   };
 
   render () {
