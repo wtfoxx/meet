@@ -12,7 +12,8 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 32
+    currentLocation: 'all',
+    numberOfEvents: 32,
   };
 
   componentDidMount() {
@@ -23,6 +24,11 @@ class App extends Component {
       }
     });
   };
+
+  componentWillUnmount() {
+    this.mounted = false;
+  };
+
 
   updateNumberOfEvents = (numberOfEvents) => {
     this.setState({
@@ -42,17 +48,12 @@ class App extends Component {
       if (this.mounted) {
         this.setState({
           events: locationEvents.slice(0, this.state.numberOfEvents),
-          locations: location,
+          currentLocation: location,
           numberOfEvents: eventCount
         });
       }
     });
   };
-
-  componentWillUnmount() {
-    this.mounted = false;
-  };
-
 
   render() {
     return (

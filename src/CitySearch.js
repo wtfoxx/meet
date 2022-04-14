@@ -5,7 +5,7 @@ class CitySearch extends Component {
   state = {
     query: '',
     suggestions: [],
-    showSuggestions: undefined
+    showSuggestions: undefined,
   }
 
   handleInputChanged = (event) => {
@@ -22,6 +22,7 @@ class CitySearch extends Component {
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
+      suggestions: [],
       showSuggestions: false
     });
 
