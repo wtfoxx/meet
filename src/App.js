@@ -35,7 +35,7 @@ class App extends Component {
       numberOfEvents
     });
     
-    this.updateEvents(this.state.locations, numberOfEvents);
+    this.updateEvents(this.state.currentLocation, numberOfEvents);
   }
   
   updateEvents = (location, eventCount) => {
