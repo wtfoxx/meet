@@ -5,6 +5,8 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
 
 
 class App extends Component {
@@ -57,11 +59,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        Number of Events:<NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
-        <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents} />
-      </div>
+      <Container>
+        <div className='App'>
+          <h1 className='text-center title'>Meet</h1>
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <br />
+          <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
+          <br />
+          <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents} />
+        </div>
+      </Container>
     );
   };
 

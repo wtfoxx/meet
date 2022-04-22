@@ -1,4 +1,6 @@
+import { render } from "nprogress";
 import react, { Component } from "react";
+import { Card, Button, Accordion, Dropdown, Col } from "react-bootstrap";
 
 class Event extends Component {
 
@@ -13,27 +15,34 @@ class Event extends Component {
     });
   };
 
-
-
   render() {
     const { event } = this.props;
     const { collapsed } = this.state;
 
-    return <div className="event">
-      <h2 className="event-summary">{event.summary}</h2>
-      <p className="event-start">{event.start.dateTime} ({event.start.timeZone})</p>
-      <p className="event-location">{event.location}</p>
-      <button className={`details-button ${collapsed ? "show" : "hide"}-details`}
-      onClick={this.handleClick}>{collapsed ? "Show details" : "Hide details"}</button>
+    return <div>
+      <Card>
+        <Card.Body>
+          <Card.Title>{event.summary}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{event.start.dateTime} ({event.start.timeZone})</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">{event.location}</Card.Subtitle>
+        </Card.Body>
 
-      {!collapsed &&
-        <div className={`more-details ${this.state.collapsed ? "hide" : "show"}`}>
-          <a href={event.htmlLink} rel="noreferrer" target="_blank">See event on Google Calendars</a>
-          <p className="event-description">{event.description}</p>
-        </div>
-      }
-    </div>;
+        <Accordion defaultActiveKey="1" flush >
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>Event details</Accordion.Header>
+            <Accordion.Body>
+              <Card.Text className="event-description">{event.description}</Card.Text>
+              <Button href={event.htmlLink} rel="noreferrer" target="_blank">See event on Google Calendars</Button>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion> 
+      </Card>
+      <br />
+      </div>
+    ;
   }
 }
+
+
 
 export default Event;
