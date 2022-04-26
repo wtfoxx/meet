@@ -1,7 +1,7 @@
 import react, { Component } from "react";
-import { Badge } from "react-bootstrap";
+import { Alert, Collapse } from "@mui/material";
 
-class Alert extends Component {
+class Alerts extends Component {
   constructor(props) {
     super(props);
     this.bg = null;
@@ -13,24 +13,24 @@ class Alert extends Component {
 
   render() {
     return (
-      <div className="Alert">
-        <Badge bg={this.getStyle()}>{this.props.text}</Badge>
-      </div>
+      <Collapse in={this.props.text !== ''}>
+        <Alert severity={this.getStyle()}>{this.props.text}</Alert>
+      </Collapse>
     );
   }
 }
 
-class InfoAlert extends Alert {
+class InfoAlert extends Alerts {
   constructor(props) {
     super(props);
-    this.bg = "primary";
+    this.bg = "info";
   }
 }
 
-class ErrorAlert extends Alert {
+class ErrorAlert extends Alerts {
   constructor(props) {
     super(props);
-    this.bg = "danger";
+    this.bg = "warning";
   }
 }
 

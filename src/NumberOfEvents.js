@@ -1,6 +1,6 @@
 import react, { Component } from "react";
 import { ErrorAlert } from "./Alert";
-import { Row, Col, Form } from "react-bootstrap";
+import { TextField, Box } from "@mui/material";
 
 class NumberOfEvents extends Component {
   state = {
@@ -29,19 +29,21 @@ class NumberOfEvents extends Component {
 
   render () {
     return (
-      <Row className="justify-content-center">
-        <h6 className="text-center">Number of Events</h6>
-        <Col xl={3} lg={4} md={6} sm={12} className="numberOfEvents">
-          <Form.Control
+      <div>
+        <Box>
+          <TextField
+            label="Number of events"
             type="number"
             className="inputNumber"
             onChange={this.handleChange}
             value={this.state.numberOfEvents}
           />
-          <ErrorAlert className="text-center" text={this.state.infoText} />
+          
   
-        </Col>
-      </Row> 
+        </Box>
+        <br />
+          <ErrorAlert className="text-center" text={this.state.infoText} />
+      </div> 
     )
   }
 

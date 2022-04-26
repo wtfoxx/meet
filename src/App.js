@@ -5,8 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import { Container, Typography } from '@mui/material';
 
 
 class App extends Component {
@@ -59,15 +58,13 @@ class App extends Component {
 
   render() {
     return (
-      <Container>
-        <div className='App'>
-          <h1 className='text-center title'>Meet</h1>
+      <Container maxWidth="sm">
+        <Typography variant="h3" gutterBottom component="div">Meet</Typography>
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <br />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
           <br />
           <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents} />
-        </div>
       </Container>
     );
   };

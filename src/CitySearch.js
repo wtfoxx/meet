@@ -1,6 +1,10 @@
 import react, { Component } from "react";
-import { Row, Col, Form, ListGroup } from "react-bootstrap";
 import { InfoAlert } from "./Alert";
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+
+import { MenuItem, Paper } from "@mui/material";
+
 
 class CitySearch extends Component {
 
@@ -8,6 +12,7 @@ class CitySearch extends Component {
     query: '',
     suggestions: [],
     showSuggestions: undefined,
+    infoText: ''
   }
 
   handleInputChanged = (event) => {
@@ -43,33 +48,41 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <Row className="justify-content-center">
-        <h5 className="text-center">Search city</h5>
+      <div className="justify-content-center">
+
           
 
-        <Col xl={3} lg={4} md={6} sm={12} className="CitySearch">
+        <Stack>
           
           <InfoAlert className="text-center" text={this.state.infoText} />
-          <Form.Control
-            type="text"
-            className="city"
-            value={this.state.query}
-            onChange={this.handleInputChanged}
-            onFocus={() => { this.setState({ showSuggestions: true }) }}
-          />
-          <ListGroup className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
-            {this.state.suggestions.map((suggestion) => (
-              <ListGroup.Item action
-              key={suggestion}
-              onClick={() => this.handleItemClicked(suggestion)}
-              >{suggestion}</ListGroup.Item>
-            ))}
-            <ListGroup.Item action onClick={() => this.handleItemClicked('all')}>
-              <b>See all cities</b>
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-      </Row>
+          <br />
+
+        <TextField
+          label="Search city"
+          value={this.state.query}
+          onChange={this.handleInputChanged}
+          onFocus={() => { this.setState({ showSuggestions: true }) }}
+        >
+        </TextField>
+        <Paper 
+        elevation={1}
+        sx={{
+          position: 'absolute',
+          width: 'inherit',
+          top: 150,
+          zIndex: 'tooltip',
+        }}
+       >
+          {this.state.suggestions.map((suggestion) => (
+            <MenuItem key={suggestion} value={suggestion} onClick={() => this.handleItemClicked(suggestion)} style={this.state.showSuggestions && !this.state.infoText && this.state.query ? {} : { display: 'none' }}>
+              {suggestion}
+            </MenuItem>
+          ))}
+          <MenuItem onClick={() => this.handleItemClicked('all')}  style={this.state.showSuggestions && !this.state.infoText ? {} : { display: 'none' }}><b>See all cities</b></MenuItem>
+        </Paper>
+   
+        </Stack>
+      </div>
     );
   }
 }
