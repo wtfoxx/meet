@@ -1,5 +1,6 @@
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "short_name": "Meet App",
   "name": "Meet App",
   "icons": [
@@ -22,6 +23,10 @@
       "purpose": "any maskable"
     }
   ],
+=======
+  "short_name": "React App",
+  "name": "Create React App Sample",
+>>>>>>> Stashed changes
 =======
   "short_name": "React App",
   "name": "Create React App Sample",

@@ -1,6 +1,7 @@
 {
   "files": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "main.css": "/meet/static/css/main.d0aa35e2.css",
     "main.js": "/meet/static/js/main.8b3e5d4f.js",
     "static/js/377.c6d568f6.chunk.js": "/meet/static/js/377.c6d568f6.chunk.js",
@@ -14,6 +15,8 @@
     "static/css/main.d0aa35e2.css",
     "static/js/main.8b3e5d4f.js"
 =======
+=======
+>>>>>>> Stashed changes
     "main.css": "/meet/static/css/main.1f6e645d.css",
     "main.js": "/meet/static/js/main.2e1d69db.js",
     "static/js/377.dda790c9.chunk.js": "/meet/static/js/377.dda790c9.chunk.js",
@@ -26,6 +29,9 @@
   "entrypoints": [
     "static/css/main.1f6e645d.css",
     "static/js/main.2e1d69db.js"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   ]
 }
