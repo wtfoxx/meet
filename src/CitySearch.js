@@ -55,7 +55,6 @@ class CitySearch extends Component {
         <Stack>
           
           <InfoAlert className="text-center" text={this.state.infoText} />
-          <br />
 
         <TextField
           label="Search city"

@@ -6,6 +6,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
 import { Container, Typography } from '@mui/material';
+import { OfflineAlert } from './Alert';
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
     locations: [],
     currentLocation: 'all',
     numberOfEvents: 32,
+    OfflineAlertText: ''
   };
 
   componentDidMount() {
@@ -22,6 +24,15 @@ class App extends Component {
     getEvents().then((events) => {
       if (this.mounted) {
       this.setState({ events, locations: extractLocations(events) });
+      }
+      if (!navigator.onLine) {
+        this.setState({
+          OfflineAlertText: 'You are offline'
+        });
+      } else {
+        this.setState({
+          OfflineAlertText: ''
+        });
       }
     });
   };
@@ -63,7 +74,7 @@ class App extends Component {
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <br />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
-          <br />
+          <OfflineAlert className="text-center" text={this.state.OfflineAlertText} />
           <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents} />
       </Container>
     );

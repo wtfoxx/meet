@@ -15,6 +15,7 @@ class Alerts extends Component {
     return (
       <Collapse in={this.props.text !== ''}>
         <Alert severity={this.getStyle()}>{this.props.text}</Alert>
+        <br />
       </Collapse>
     );
   }
@@ -30,8 +31,15 @@ class InfoAlert extends Alerts {
 class ErrorAlert extends Alerts {
   constructor(props) {
     super(props);
+    this.bg = "info";
+  }
+}
+
+class OfflineAlert extends Alerts {
+  constructor(props) {
+    super(props);
     this.bg = "warning";
   }
 }
 
-export { InfoAlert, ErrorAlert };
+export { InfoAlert, ErrorAlert, OfflineAlert };
