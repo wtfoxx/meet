@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
@@ -7,6 +7,14 @@ import { getEvents, extractLocations } from './api';
 import './nprogress.css';
 import { Container, Typography } from '@mui/material';
 import { OfflineAlert } from './Alert';
+import { 
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, 
+  ResponsiveContainer,
+} from 'recharts';
+import EventGenre from './EventGenre';
+import { Accordion, AccordionSummary } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 
 class App extends Component {
@@ -67,14 +75,61 @@ class App extends Component {
     });
   };
 
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return {city, number};
+    })
+    return data;
+  }
+
   render() {
+    const { locations, numberOfEvents, events } = this.state;
     return (
-      <Container maxWidth="sm">
+      <Container>
         <Typography variant="h3" gutterBottom component="div">Meet</Typography>
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <br />
           <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
           <OfflineAlert className="text-center" text={this.state.OfflineAlertText} />
+          
+          <Typography variant="button" gutterBottom component="div">Events in each city</Typography>
+          
+          <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+          >
+            <Typography>Events graphs</Typography>
+          </AccordionSummary>
+          
+          <div className='data-vis-wrapper graph'>
+            <EventGenre events={this.state.events} />
+            <ResponsiveContainer height={400}>
+              <ScatterChart
+                margin={{
+                  top: 20, right: 20, bottom: 20, left: -10,
+                }}
+              >
+                <CartesianGrid />
+                <XAxis 
+                  type="category" 
+                  dataKey="city" 
+                  name="City" />
+                <YAxis 
+                  allowDecimals={false}
+                  type="number" 
+                  dataKey="number" 
+                  name="Number of Events" />
+                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                <Scatter data={this.getData()} fill="#8884d8" />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+          </Accordion>
+          <br />
           <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents} />
       </Container>
     );

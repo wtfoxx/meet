@@ -67,8 +67,9 @@ class CitySearch extends Component {
         elevation={1}
         sx={{
           position: 'absolute',
-          width: 'inherit',
-          top: 150,
+          maxWidth: 435,
+          width: 435,
+          top: 135,
           zIndex: 'tooltip',
         }}
        >
