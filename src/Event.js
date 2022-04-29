@@ -1,8 +1,6 @@
 import { render } from "nprogress";
 import react, { Component } from "react";
-import { Card, Accordion, Button, CardContent, Typography, AccordionSummary, CardActions, AccordionDetails, Collapse, CardHeader } from "@mui/material";
-import { IconButton } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Card, Button, CardContent, Typography, CardActions } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
@@ -57,17 +55,6 @@ class Event extends Component {
 
 
     const { event } = this.props;
-    const { collapsed } = this.state;
-    const ExpandMore = styled((props) => {
-      const { expand, ...other } = props;
-      return <IconButton {...other} />;
-    })(({ theme, expand }) => ({
-      transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-      
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    }));
 
     return <div>
       <Card>

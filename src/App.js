@@ -90,9 +90,9 @@ class App extends Component {
     return (
       <Container>
         <Typography variant="h3" gutterBottom component="div">Meet</Typography>
-          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <CitySearch locations={locations} updateEvents={this.updateEvents} />
           <br />
-          <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
+          <NumberOfEvents numberOfEvents={numberOfEvents} updateNumberOfEvents={this.updateNumberOfEvents} />
           <OfflineAlert className="text-center" text={this.state.OfflineAlertText} />
           
           <Typography variant="button" gutterBottom component="div">Events in each city</Typography>
@@ -106,7 +106,7 @@ class App extends Component {
           </AccordionSummary>
           
           <div className='data-vis-wrapper graph'>
-            <EventGenre events={this.state.events} />
+            <EventGenre events={events} />
             <ResponsiveContainer height={400}>
               <ScatterChart
                 margin={{
@@ -130,7 +130,7 @@ class App extends Component {
           </div>
           </Accordion>
           <br />
-          <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents} />
+          <EventList events={events} numberOfEvents={numberOfEvents} />
       </Container>
     );
   };
