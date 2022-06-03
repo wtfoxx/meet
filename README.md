@@ -24,6 +24,7 @@ Visit [Meet App](https://wtfoxx.github.io/meet/)
 ## Tech-stack
 
 -   React
+-   React MUI
 -   Jest
 -   Enzyme
 -   jest-cucumber
